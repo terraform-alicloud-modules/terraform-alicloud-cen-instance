@@ -16,7 +16,7 @@ You can use this in your terraform template with the following steps.
 
    ```
    module "cen_instance" {
-     source = "terraform-alicloud-modules/cen_instance/alicloud"
+     source = "terraform-alicloud-modules/cen-instance/alicloud"
    
      name                     = "cen-instance-name"
      new_instance             = true
