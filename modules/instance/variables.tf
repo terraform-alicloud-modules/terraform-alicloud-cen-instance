@@ -11,3 +11,4 @@ variable "new_instance" {
   description = "Whether to create a CEN instance."
   default     = false
 }
+

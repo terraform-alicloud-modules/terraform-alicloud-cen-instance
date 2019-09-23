@@ -14,3 +14,4 @@ variable "publish_route_entry" {
   description = "Whether to publish the route entry to the cen."
   default     = false
 }
+
