@@ -1,20 +1,25 @@
+variable "region" {
+  description = "The region used to launch this module resources."
+  default     = ""
+}
+
 variable "name" {
   description = "Name of the CEN instance"
 }
 
 variable "description" {
   description = "The description of the CEN instance"
-  default     = ""
+  default     = "TF"
 }
 
 variable "new_instance" {
   description = "Whether to create a CEN instance."
-  default     = false
+  default     = 1
 }
 
 variable "instance_id" {
   description = "The ID of the CEN instance to attach."
-  default = ""
+  default     = ""
 }
 
 variable "child_instance_id" {
@@ -42,3 +47,4 @@ variable "publish_route_entry" {
   description = "Whether to publish the route entry to the cen."
   default     = false
 }
+

@@ -14,3 +14,4 @@ variable "attach_instance" {
   description = "Whether to attach the child instance to one cen instance."
   default     = false
 }
+
