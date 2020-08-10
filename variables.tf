@@ -12,39 +12,28 @@ variable "description" {
   default     = "TF"
 }
 
-variable "new_instance" {
-  description = "Whether to create a CEN instance."
-  default     = 1
+variable "create_cen" {
+  description = "Controls if CEN should be created"
+  type        = bool
+  default     = true
 }
 
-variable "instance_id" {
-  description = "The ID of the CEN instance to attach."
-  default     = ""
+// Tags
+variable "tags" {
+  description = "A map of tags to add to all resources"
+  type        = map(string)
+  default     = {}
 }
 
-variable "child_instance_id" {
-  description = "The ID of the child instance"
+variable "cen_tags" {
+  description = "Additional tags for the CEN"
+  type        = map(string)
+  default     = {}
 }
 
-variable "child_instance_region_id" {
-  description = "The region ID of the child instance"
+# VPCs created in an account different from the CEN instance must have the vpc_owner_id specified
+variable "instances_attachment" {
+  description = "List of VPCs to grant access to the Alibaba account as the CEN"
+  type        = list(object({ vpc_id = string, vpc_region_id = string, vpc_owner_id = string }))
+  default     = []
 }
-
-variable "attach_instance" {
-  description = "Whether to attach the child instance to one cen instance."
-  default     = false
-}
-
-variable "route_table_id" {
-  description = "The route table of the attached VBR or VPC."
-}
-
-variable "cidr_block" {
-  description = "The destination CIDR block of the route entry to publish."
-}
-
-variable "publish_route_entry" {
-  description = "Whether to publish the route entry to the cen."
-  default     = false
-}
-
