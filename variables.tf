@@ -32,8 +32,9 @@ variable "cen_tags" {
 }
 
 # VPCs created in an account different from the CEN instance must have the vpc_owner_id specified
+# The vpc_owner_id is only needed when a VPC is in a different Alicloud account than the CEN
 variable "instances_attachment" {
-  description = "List of VPCs to grant access to the Alibaba account as the CEN"
-  type        = list(object({ vpc_id = string, vpc_region_id = string, vpc_owner_id = string }))
-  default     = []
+  description = "Map of VPCs to grant access to the Alibaba account which hosts the CEN"
+  type        = map(object({ vpc_id = string, vpc_region_id = string, vpc_owner_id = string }))
+  default     = {}
 }

@@ -31,9 +31,11 @@ resource "alicloud_cen_instance" "this" {
 # CEN attachments
 ###############
 resource "alicloud_cen_instance_attachment" "this" {
-  count                    = length(var.instances_attachment)
+
+  for_each                 = var.instances_attachment
   instance_id              = alicloud_cen_instance.this.id
-  child_instance_id        = var.instances_attachment[count.index]["vpc_id"]
-  child_instance_region_id = var.instances_attachment[count.index]["vpc_region_id"]
-  child_instance_owner_id  = var.instances_attachment[count.index]["vpc_owner_id"]
+  child_instance_id        = each.value.vpc_id
+  child_instance_region_id = each.value.vpc_region_id
+  child_instance_owner_id  = each.value.vpc_owner_id != "" ? each.value.vpc_owner_id : null
+
 }
